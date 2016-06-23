@@ -1,11 +1,12 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:show]
+  before_action :set_link_to_change, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /links
   # GET /links.json
   def index
-    @links = Link.all
+    @links = Link.all.order('created_at DESC')
   end
 
   # GET /links/1
@@ -71,5 +72,14 @@ class LinksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
       params.require(:link).permit(:title, :url)
+    end
+
+    def set_link_to_change
+      begin
+        @link = current_user.links.find(params[:id])
+      rescue
+        redirect_to root_path
+      end
+      
     end
 end
