@@ -6,6 +6,26 @@
 	    <%= link_to link.title, link %>
 	  </h2>
 	  <small class="author">Submitted <%= time_ago_in_words(link.created_at) %>, by <%= link.user.name %></small>
+	  <br>
+	  <div class="btn-group" role="group">
+	  	<%= link_to 'Visit URL', link.url, class: 'btn btn-info' %>
+	  	<span class="link-<%= link.id %>">
+	  		<%= link_to like_link_path(link), method: 'put', remote: true,class: 'btn btn-default like' do %>
+		  		<div class="like-<%= link.id %>">
+		  		<span class="glyphicon glyphicon-thumbs-up"></span>
+		  			<%= link.cached_votes_up %>
+		  		</div>
+		  	<% end %>
+	  	</span>
+	  	<span class="link-<%= link.id %>">
+	  		<%= link_to dislike_link_path(link), method: 'put', class: 'btn btn-default dislike' do %>
+		  		<div class="dislike-<%= link.id %>">
+		  		<span class="glyphicon glyphicon-thumbs-down"></span>
+		  			<%= link.cached_votes_down %>
+		  		</div>	
+		  	<% end %>
+	  	</span>
+	  </div>
 	<% end %>
 </div>
 

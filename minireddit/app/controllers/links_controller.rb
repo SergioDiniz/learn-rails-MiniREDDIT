@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show]
+  before_action :set_link, only: [:show, :upvote, :downvote]
   before_action :set_link_to_change, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -61,6 +61,16 @@ class LinksController < ApplicationController
       format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @link.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @link.downvote_from current_user
+    redirect_to :back
   end
 
   private
