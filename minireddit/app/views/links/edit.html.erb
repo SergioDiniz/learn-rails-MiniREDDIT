@@ -5,6 +5,8 @@
 </div>
 <br>
 <div class="row text-center">
-	<%= link_to 'Show', @link %> |
-	<%= link_to 'Back', links_path %>
+	<div class="btn-group" role="group">
+		<%= link_to 'Show', @link, class: 'btn btn-default' %>
+		<%= link_to 'Back', links_path, class: 'btn btn-default' %>
+	</div>
 </div>

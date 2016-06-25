@@ -13,6 +13,9 @@
 	</p>
 
 	<% if current_user and current_user == @link.user %>
-		<%= link_to 'Edit', edit_link_path(@link) %>
+		<div class="btn-group" role="group" aria-label="...">
+			<%= link_to 'Edit', edit_link_path(@link), class: 'btn btn-default'%>
+			<%= link_to 'Delete', @link, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+		</div>
 	<% end %>
 </div>
