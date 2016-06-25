@@ -9,22 +9,21 @@
 	  <br>
 	  <div class="btn-group" role="group">
 	  	<%= link_to 'Visit URL', link.url, class: 'btn btn-info' %>
-	  	<span class="link-<%= link.id %>">
-	  		<%= link_to like_link_path(link), method: 'put', remote: true,class: 'btn btn-default like' do %>
-		  		<div class="like-<%= link.id %>">
+
+	  		<%= link_to like_link_path(link), method: 'get', remote: true, class: "btn btn-default up-#{link.id}" do %>
 		  		<span class="glyphicon glyphicon-thumbs-up"></span>
+		  		<span class="like-<%= link.id %>">
 		  			<%= link.cached_votes_up %>
-		  		</div>
+		  		</span>
 		  	<% end %>
-	  	</span>
-	  	<span class="link-<%= link.id %>">
-	  		<%= link_to dislike_link_path(link), method: 'put', class: 'btn btn-default dislike' do %>
-		  		<div class="dislike-<%= link.id %>">
+
+	  		<%= link_to dislike_link_path(link), method: 'get', remote: true, class: "btn btn-default down-#{link.id}" do %>
 		  		<span class="glyphicon glyphicon-thumbs-down"></span>
+		  		<span class="dislike-<%= link.id %>">
 		  			<%= link.cached_votes_down %>
-		  		</div>	
+		  		</span>	
 		  	<% end %>
-	  	</span>
+
 	  </div>
 	<% end %>
 </div>

@@ -1,0 +1,4 @@
+$('.up-<%= @link.id %>').bind('ajax:success', function(){
+	$('.like-<%= @link.id %>').html('<%= @link.cached_votes_up %>')
+	$('.dislike-<%= @link.id %>').html('<%= @link.cached_votes_down %>')
+});

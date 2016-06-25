@@ -20,13 +20,17 @@
 	<% end %>
 
 	<div class="btn-group pull-right" role="group" role="toolbar" >
-		<%= link_to like_link_path(@link), method: 'put', class: 'btn btn-default' do %>
+		<%= link_to like_link_path(@link), method: 'get', remote: true, class: "btn btn-default up-#{@link.id}" do %>
 			<span class="glyphicon glyphicon-thumbs-up"></span>
-			<%= @link.cached_votes_up %>
+			<span class="like-<%= @link.id %>">
+				<%= @link.cached_votes_up %>
+			</span>
 		<% end %>
-		<%= link_to dislike_link_path(@link), method: 'put', class: 'btn btn-default' do %>
+		<%= link_to dislike_link_path(@link), method: 'get', remote: true, class: "btn btn-default down-#{@link.id}" do %>
 			<span class="glyphicon glyphicon-thumbs-down"></span>
-			<%= @link.cached_votes_down %>
+			<span class="dislike-<%= @link.id %>">
+				<%= @link.cached_votes_down %>
+			</span>
 		<% end %>
 	</div>
 
