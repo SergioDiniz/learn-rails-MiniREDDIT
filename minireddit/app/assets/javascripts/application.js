@@ -15,3 +15,9 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ajaxError(function (event, jqxhr, settings, exception) {
+    if (jqxhr.status == 401) { 
+    	window.location = '/users/sign_in'
+    }
+});

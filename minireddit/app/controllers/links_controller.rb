@@ -64,20 +64,18 @@ class LinksController < ApplicationController
   end
 
   def upvote
-    
+    @link.upvote_by current_user
     respond_to do |format|
       format.html {redirect_to :back }
       format.js   { render layout: false }
-      @link.upvote_by current_user
     end
   end
 
   def downvote
-    
+    @link.downvote_from current_user
     respond_to do |format|
       format.html {redirect_to :back }
       format.js   { render layout: false }
-      @link.downvote_from current_user
     end
   end
 

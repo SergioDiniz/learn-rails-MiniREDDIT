@@ -18,14 +18,14 @@
 	  	<div class="collapse navbar-collapse">
 	  		<% if user_signed_in? %>
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to 'Novo Link', new_link_path %></li>
-					<li><%= link_to 'Configurações', edit_user_registration_path %></li>
-					<li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
+					<li><%= link_to 'New Link', new_link_path %></li>
+					<li><%= link_to 'Account', edit_user_registration_path %></li>
+					<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
 				</ul>
 			<% else %>
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to 'Cadaste-se', new_user_registration_path, class: 'navbar-link' %></li>
-					<li><%= link_to 'Logar', new_user_session_path, class: 'navbar-link' %></li>
+					<li><%= link_to 'Sign up', new_user_registration_path, class: 'navbar-link' %></li>
+					<li><%= link_to 'Sign in', new_user_session_path, class: 'navbar-link' %></li>
 				</ul>
 			<% end %>
 	  	</div>
