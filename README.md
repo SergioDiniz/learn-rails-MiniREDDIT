@@ -1,7 +1,7 @@
 # Learning Ruby on Rails
 building app similar to REDDIT
 
-result final:
+final result:
 
 ##Index:
 ![Site](/index.png)
