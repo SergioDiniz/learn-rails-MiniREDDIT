@@ -31,8 +31,26 @@
 		
 		<% end %>
 	</div>
-	
 
+	<div>
+		<h3><%= @link.comments.size %> Comments</h3>
+	</div>
 	
+	<div>
+		<%= render partial: @link.comments %>
+	</div>
 
+	<div>
+		<hr>
+		<h4>New Comment</h4>
+		<%= simple_form_for [@link, Comment.new] do |f| %>
+			<div class="field">
+				<%= f.text_area :body, class: 'form-control' %>
+			</div>
+			<br>
+			<%= f.submit 'Add Comment', class: 'btn btn-primary' %>
+		<% end %>
+	</div>
+	<br>
 </div>
+

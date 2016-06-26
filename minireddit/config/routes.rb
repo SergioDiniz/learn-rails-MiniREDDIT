@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'like',    to: 'links#upvote'
       get 'dislike', to: 'links#downvote'
     end
+    resources :comments
   end
 
   root to: 'links#index'

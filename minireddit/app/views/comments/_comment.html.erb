@@ -1,0 +1,21 @@
+<%= div_for(comment) do %>
+	<hr>
+	<div class="media">
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= comment.user.name %></h4>
+	    <%= comment.body %>
+	    <br>
+	    <small><strong>commented: </strong> <%= time_ago_in_words(comment.created_at) %></small>
+	  </div>
+	  <% if current_user and current_user == comment.user %>
+		  <div class="media-right">
+			<%= link_to comment, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default' do %>
+	    		<span class="glyphicon glyphicon-trash"></span>
+		    <% end %>
+		  </div>
+	  <% end %>
+	</div>
+<% end %>
+
+<%#= link_to 'Edit', edit_comment_path(@comment) %>
+<%#= link_to 'Back', comments_path %>
