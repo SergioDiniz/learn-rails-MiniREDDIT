@@ -3,8 +3,9 @@
 	<div class="media">
 	  <div class="media-body">
 	    <h4 class="media-heading"><%= comment.user.name %></h4>
-	    <%= comment.body %>
-	    <br>
+	    <div style="white-space: pre-line;">
+	    	<%= comment.body %>
+	    </div>
 	    <small><strong>commented: </strong> <%= time_ago_in_words(comment.created_at) %></small>
 	  </div>
 	  <% if current_user and current_user == comment.user %>

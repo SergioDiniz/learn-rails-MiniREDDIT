@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625173802) do
+ActiveRecord::Schema.define(version: 20160626121321) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "link_id"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20160625173802) do
     t.integer  "cached_weighted_score",   default: 0
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
+    t.text     "body"
+    t.integer  "comments_count",          default: 0
   end
 
   add_index "links", ["cached_votes_down"], name: "index_links_on_cached_votes_down"

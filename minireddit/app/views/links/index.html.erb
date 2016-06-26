@@ -5,29 +5,36 @@
 	  <h2>
 	    <%= link_to link.title, link %>
 	  </h2>
+
+	  <p style="white-space: pre-line;"><%= link.body %></p>
 	  <small class="author">Submitted <%= time_ago_in_words(link.created_at) %>, by <%= link.user.name %></small>
 	  <br>
 	  <div class="btn-group" role="group">
 	  	<%= link_to 'Visit URL', link.url, class: 'btn btn-info' %>
 
-			<%= link_to like_link_path(link), method: 'get', remote: true, class: "btn btn-default up-#{link.id}" do %>
-		  		<span class="glyphicon glyphicon-thumbs-up"></span>
-		  		<span class="like-<%= link.id %>">
-		  			<%= link.cached_votes_up %>
-		  		</span>
-		  	<% end %>
+		<%= link_to like_link_path(link), method: 'get', remote: true, class: "btn btn-default up-#{link.id}" do %>
+	  		<span class="glyphicon glyphicon-thumbs-up"></span>
+	  		<span class="like-<%= link.id %>">
+	  			<%= link.cached_votes_up %>
+	  		</span>
+	  	<% end %>
 
-	  		<%= link_to dislike_link_path(link), method: 'get', remote: true, class: "btn btn-default down-#{link.id}" do %>
-		  		<span class="glyphicon glyphicon-thumbs-down"></span>
-		  		<span class="dislike-<%= link.id %>">
-		  			<%= link.cached_votes_down %>
-		  		</span>	
-		  	<% end %>
-			
-			<% if current_user and current_user == link.user %>
-		  		<%= link_to 'Edit', edit_link_path(link), class: 'btn btn-default' %>
-		  		<%= link_to 'Delete', link_path(link), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-default' %>
-			<% end %>
+  		<%= link_to dislike_link_path(link), method: 'get', remote: true, class: "btn btn-default down-#{link.id}" do %>
+	  		<span class="glyphicon glyphicon-thumbs-down"></span>
+	  		<span class="dislike-<%= link.id %>">
+	  			<%= link.cached_votes_down %>
+	  		</span>	
+	  	<% end %>
+
+	  	<%= link_to link, class: 'btn btn-default' do %>
+			<span class="glyphicon glyphicon-comment"></span>
+			<%= link.comments_count %>
+	  	<% end %>
+		
+		<% if current_user and current_user == link.user %>
+	  		<%= link_to 'Edit', edit_link_path(link), class: 'btn btn-default' %>
+	  		<%= link_to 'Delete', link_path(link), method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-default' %>
+		<% end %>
 
 	  </div>
 	  <hr>
