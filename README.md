@@ -3,7 +3,7 @@ building app similar to REDDIT
 
 final result:
 
-live demo: https://vast-cove-52246.herokuapp.com
+live demo: https://minireddit.herokuapp.com
 
 ##Index:
 ![Site](/index.png)
